@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Empresa X</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+
+    header {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      background: white;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="https://ceoacademy.edu.pe/programas/especializaciones-asincronas/mecanica-de-suelos-con-fines-de-pavimentacion-a/" target="_blank">
+    <img src="logo.png">
+  </a>
+</header>
+
+<iframe src="Especializacion.pdf"></iframe>
+
+</body>
+</html>
