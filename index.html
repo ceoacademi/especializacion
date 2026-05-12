@@ -15,11 +15,35 @@ body{
     background:#f4f4f4;
 }
 
+/* 🔹 CONTENEDOR GENERAL */
+
+.mainContainer{
+    max-width:1150px;
+    margin:20px auto;
+    padding:20px;
+}
+
+/* 🔹 BANNER SUPERIOR */
+
+.banner{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.08);
+    margin-bottom:40px;
+}
+
+.banner img{
+    width:100%;
+    border-radius:12px;
+    display:block;
+}
+
 /* 🔹 PANTALLA INICIAL */
 
-#inicio{
+#inicioBox{
     max-width:700px;
-    margin:50px auto;
+    margin:auto;
     background:white;
     border-radius:15px;
     overflow:hidden;
@@ -31,11 +55,6 @@ body{
     color:white;
     text-align:center;
     padding:30px 20px;
-}
-
-.logoInicio{
-    height:80px;
-    margin-bottom:20px;
 }
 
 .header h1{
@@ -127,7 +146,11 @@ button:hover{
 
 /* 🔹 CELULAR */
 
-@media(max-width:600px){
+@media(max-width:700px){
+
+    .mainContainer{
+        padding:10px;
+    }
 
     .header h1{
         font-size:24px;
@@ -135,10 +158,6 @@ button:hover{
 
     .header p{
         font-size:16px;
-    }
-
-    .logoInicio{
-        height:60px;
     }
 
     .topbar img{
@@ -152,57 +171,74 @@ button:hover{
 
 <body>
 
-<!-- 🔹 PANTALLA INICIAL -->
+<!-- 🔹 INICIO -->
 
 <div id="inicio">
 
-    <div class="header">
+    <div class="mainContainer">
 
-        <img
-            src="logo-v.png"
-            alt="Logo"
-            class="logoInicio"
-        >
+        <!-- 🔹 BANNER SUPERIOR -->
 
-        <h1>Verificación de Certificados</h1>
+        <div class="banner">
 
-        <p>
-            Ingrese el código para validar la autenticidad de su certificado
-        </p>
+            <img
+                src="logo-v.png"
+                alt="Banner"
+            >
 
-    </div>
-
-    <div class="content">
-
-        <label>Código de Verificación</label>
-
-        <input
-            type="text"
-            id="codigo"
-            placeholder="Ej: CEO1001"
-        >
-
-        <button onclick="verificarPDF()">
-            Verificar
-        </button>
-
-        <div class="error" id="error">
-            Certificado no encontrado
         </div>
 
-        <div class="info">
-            <h3>¿Dónde encontrar el código?</h3>
+        <!-- 🔹 CAJA VERIFICACIÓN -->
 
-            <p>
-                El código se encuentra en la parte inferior del certificado digital o impreso.
-            </p>
+        <div id="inicioBox">
+
+            <div class="header">
+
+                <h1>Verificación de Certificados</h1>
+
+                <p>
+                    Ingrese el código para validar la autenticidad de su certificado
+                </p>
+
+            </div>
+
+            <div class="content">
+
+                <label>Código de Verificación</label>
+
+                <input
+                    type="text"
+                    id="codigo"
+                    placeholder="Ej: CEO1001"
+                >
+
+                <button onclick="verificarPDF()">
+                    Verificar
+                </button>
+
+                <div class="error" id="error">
+                    Certificado no encontrado
+                </div>
+
+                <div class="info">
+
+                    <h3>¿Dónde encontrar el código?</h3>
+
+                    <p>
+                        El código se encuentra en la parte inferior del certificado digital o impreso.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
 </div>
 
-<!-- 🔹 PÁGINA PDF -->
+<!-- 🔹 VISOR PDF -->
 
 <div id="visorPagina">
 
@@ -239,19 +275,15 @@ function verificarPDF(){
 
         if(response.ok){
 
-            // 🔹 OCULTAR INICIO
             document.getElementById("inicio").style.display = "none";
 
-            // 🔹 MOSTRAR VISOR
             document.getElementById("visorPagina").style.display = "block";
 
-            // 🔹 PDF COMPATIBLE CELULAR
             document.getElementById("pdfViewer").src =
             "https://docs.google.com/gview?url=https://ceoacademi.github.io/especializacion/"
             + pdfURL +
             "&embedded=true";
 
-            // 🔹 OCULTAR ERROR
             document.getElementById("error").style.display = "none";
 
         }else{
@@ -266,13 +298,10 @@ function verificarPDF(){
 
 function volverInicio(){
 
-    // 🔹 MOSTRAR INICIO
     document.getElementById("inicio").style.display = "block";
 
-    // 🔹 OCULTAR VISOR PDF
     document.getElementById("visorPagina").style.display = "none";
 
-    // 🔹 LIMPIAR PDF
     document.getElementById("pdfViewer").src = "";
 
 }
