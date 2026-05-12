@@ -33,6 +33,11 @@ body{
     padding:30px 20px;
 }
 
+.logoInicio{
+    height:80px;
+    margin-bottom:20px;
+}
+
 .header h1{
     margin:0;
     font-size:32px;
@@ -111,6 +116,7 @@ button:hover{
 
 .topbar img{
     height:55px;
+    cursor:pointer;
 }
 
 #pdfViewer{
@@ -131,6 +137,10 @@ button:hover{
         font-size:16px;
     }
 
+    .logoInicio{
+        height:60px;
+    }
+
     .topbar img{
         height:45px;
     }
@@ -147,11 +157,19 @@ button:hover{
 <div id="inicio">
 
     <div class="header">
+
+        <img
+            src="logo-v.png"
+            alt="Logo"
+            class="logoInicio"
+        >
+
         <h1>Verificación de Certificados</h1>
 
         <p>
             Ingrese el código para validar la autenticidad de su certificado
         </p>
+
     </div>
 
     <div class="content">
@@ -190,9 +208,9 @@ button:hover{
 
     <div class="topbar">
 
-        <a href="https://ceoacademy.edu.pe/programas/especializaciones-asincronas/mecanica-de-suelos-con-fines-de-pavimentacion-a/" target="_blank">
+        <a href="#" onclick="volverInicio()">
 
-            <img src="logo.png">
+            <img src="logo.png" alt="Logo">
 
         </a>
 
@@ -233,6 +251,9 @@ function verificarPDF(){
             + pdfURL +
             "&embedded=true";
 
+            // 🔹 OCULTAR ERROR
+            document.getElementById("error").style.display = "none";
+
         }else{
 
             document.getElementById("error").style.display = "block";
@@ -240,6 +261,19 @@ function verificarPDF(){
         }
 
     });
+
+}
+
+function volverInicio(){
+
+    // 🔹 MOSTRAR INICIO
+    document.getElementById("inicio").style.display = "block";
+
+    // 🔹 OCULTAR VISOR PDF
+    document.getElementById("visorPagina").style.display = "none";
+
+    // 🔹 LIMPIAR PDF
+    document.getElementById("pdfViewer").src = "";
 
 }
 
